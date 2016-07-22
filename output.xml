@@ -1,0 +1,1457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20160721 06:04:43.452" generator="Robot 3.0 (Python 2.7.12 on linux2)">
+<suite source="/home/automation/workspace/Ui_linux_new/network.txt" id="s1" name="Network">
+<kw type="setup" name="suite_setup" library="source">
+<kw name="Start Display" library="DisplayLib">
+<status status="PASS" endtime="20160721 06:04:43.787" starttime="20160721 06:04:43.684"></status>
+</kw>
+<kw name="login_web" library="source">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>${url}</arg>
+<arg>firefox</arg>
+</arguments>
+<msg timestamp="20160721 06:04:43.788" level="INFO">Opening browser 'firefox' to base url 'https://10.138.19.6:8080'</msg>
+<status status="PASS" endtime="20160721 06:04:48.357" starttime="20160721 06:04:43.788"></status>
+</kw>
+<kw name="Page Should Contain Button" library="Selenium2Library">
+<doc>Verifies button identified by `locator` is found from current page.</doc>
+<arguments>
+<arg>Log in</arg>
+</arguments>
+<msg timestamp="20160721 06:04:48.475" level="INFO">&lt;!DOCTYPE html&gt;
+&lt;!--[if lt IE 7]&gt;      &lt;html class="no-js lt-ie9 lt-ie8 lt-ie7"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 7]&gt;         &lt;html class="no-js lt-ie9 lt-ie8"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 8]&gt;         &lt;html class="no-js lt-ie9"&gt; &lt;![endif]--&gt;
+&lt;!--[if gt IE 8]&gt;&lt;!--&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""&gt;&lt;!--&lt;![endif]--&gt;&lt;head&gt;&lt;meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" /&gt;
+	
+	    &lt;base href="/" /&gt;
+        &lt;!--[if IE]&gt;&lt;script type="text/javascript"&gt;
+            // Fix for IE ignoring relative base tags.
+            (function() {
+                var baseTag = document.getElementsByTagName('base')[0];
+                baseTag.href = baseTag.href;
+            })();
+        &lt;/script&gt;&lt;![endif]--&gt;
+        
+	    &lt;!-- Framework_login_0x1F9 --&gt;
+	    
+        &lt;link href="/jquery/bootstrap-2.2.2/css/bootstrap.min.css" rel="stylesheet" /&gt;	   
+        &lt;link href="/jquery/bootstrap-2.2.2/css/bootstrap-responsive.min.css" rel="stylesheet" /&gt;
+	    &lt;link type="text/css" href="/css/allovus.css" rel="StyleSheet" /&gt;
+	    &lt;link type="text/css" href="/css/allovus_login.css" rel="StyleSheet" /&gt;
+	    &lt;script type="text/javascript" src="/jquery/jquery-1.8.3.min.js"&gt;&lt;/script&gt;
+        &lt;script src="/jquery/jquery-xmlrpc/typedarray.js"&gt;&lt;/script&gt;
+        &lt;script src="/jquery/jquery-xmlrpc/jquery.xmlrpc.min.js"&gt;&lt;/script&gt;
+        &lt;script src="/jquery/modernizr-2.6.2-respond-1.1.0/modernizr-2.6.2-respond-1.1.0.min.js"&gt;&lt;/script&gt;
+	    &lt;script src="/js/login.js"&gt;&lt;/script&gt;    
+	    &lt;link href="/images/favicon.ico" rel="shortcut icon" /&gt;
+	    &lt;script src="/jquery/bootstrap-2.2.2/js/bootstrap.min.js"&gt;&lt;/script&gt;
+	
+	&lt;/head&gt;   
+    &lt;body&gt;
+
+    &lt;div class="row-fluid"&gt;
+        &lt;div class="login-left-panel"&gt;
+            &lt;div class="tab"&gt;
+                &lt;img src="/images/wg_logo_white_login.png" /&gt;
+            &lt;/div&gt;
+            &lt;div id="div_jscriptwarning"&gt;
+                &lt;p&gt;The site requires JavaScript.  Enable JavaScript in your browser to continue.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="login-form"&gt;
+                &lt;form accept-charset="utf-8" id="login" class="form-signin"&gt;
+                    &lt;label for="username" class="control-label"&gt;User Name&lt;/label&gt;
+                    &lt;input type="text" autofocus="" placeholder="User Name" class="input-block-level" name="username" id="username" /&gt;
+
+                    &lt;label for="password" class="control-label"&gt;Passphrase&lt;/label&gt;
+                    &lt;input type="password" placeholder="Passphrase" class="input-block-level" autocomplete="off" name="password" id="password" /&gt;
+
+                    &lt;label for="sel_auth_server" class="control-label"&gt;Authentication Server&lt;/label&gt;
+                    &lt;select id="sel_auth_server"&gt;
+                        &lt;option value="Firebox-DB"&gt;Firebox-DB&lt;/option&gt;
+                        &lt;option value="RADIUS"&gt;RADIUS&lt;/option&gt;
+                        &lt;option value="LDAP"&gt;LDAP&lt;/option&gt;
+                        &lt;option value="AD"&gt;Active Directory&lt;/option&gt;
+                    &lt;/select&gt;
+            
+                    &lt;label for="ad_domain" id="lbl_ad_domain" class="control-label" style="display: none;"&gt;Domain&lt;/label&gt;
+                    &lt;input type="text" placeholder="Domain" class="input-block-level" id="ad_domain" style="display: none;" /&gt;
+
+                    &lt;!-- REMOVED btn-large CLASS --&gt;
+                    &lt;button data-loading-text="Logging In..." id="submit" class="btn btn-primary"&gt;Log in&lt;/button&gt;
+
+                    &lt;input type="hidden" id="domain" name="domain" /&gt;
+                    &lt;input type="hidden" value="/" id="from_page" name="from_page" /&gt;
+                    &lt;br /&gt;&lt;br /&gt;
+                    &lt;div class="alert alert-error hide" id="error_container" style="display: none;"&gt;&lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;!--
+    &lt;div id="webui_footer"&gt;Powered by WatchGuard Technologies&lt;/div&gt; 
+--&gt;
+  
+
+&lt;script&gt;
+var S_INVALID_LOGIN = "Incorrect user name or passphrase.";
+var S_ENTER_USER_NAME = "You must specify a user name.";
+var S_ENTER_PASSPHRASE = "You must specify a passphrase.";
+var S_ENTER_DOMAIN = "You must specify a domain.";
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;</msg>
+<msg timestamp="20160721 06:04:48.582" level="INFO">Current page contains button 'Log in'.</msg>
+<status status="PASS" endtime="20160721 06:04:48.582" starttime="20160721 06:04:48.358"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>id=username</arg>
+<arg>admin</arg>
+</arguments>
+<msg timestamp="20160721 06:04:48.583" level="INFO">Typing text 'admin' into text field 'id=username'</msg>
+<status status="PASS" endtime="20160721 06:04:48.677" starttime="20160721 06:04:48.583"></status>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>id=password</arg>
+<arg>readwrite</arg>
+</arguments>
+<msg timestamp="20160721 06:04:48.678" level="INFO">Typing password into text field 'id=password'</msg>
+<status status="PASS" endtime="20160721 06:04:48.787" starttime="20160721 06:04:48.678"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>id=submit</arg>
+</arguments>
+<msg timestamp="20160721 06:04:48.788" level="INFO">Clicking button 'id=submit'.</msg>
+<status status="PASS" endtime="20160721 06:04:49.033" starttime="20160721 06:04:48.788"></status>
+</kw>
+<kw name="Set Browser Implicit Wait" library="Selenium2Library">
+<doc>Sets current browser's implicit wait in seconds.</doc>
+<arguments>
+<arg>10</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:04:52.107" starttime="20160721 06:04:49.033"></status>
+</kw>
+<status status="PASS" endtime="20160721 06:04:52.108" starttime="20160721 06:04:43.787"></status>
+</kw>
+<status status="PASS" endtime="20160721 06:04:52.108" starttime="20160721 06:04:43.683"></status>
+</kw>
+<test id="s1-t1" name="case1:radio">
+<kw type="setup" name="first_step_goto_page" library="source">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>https://10.138.19.6:8080/dashboard/#frontpanel</arg>
+</arguments>
+<msg timestamp="20160721 06:04:52.110" level="INFO">Opening url 'https://10.138.19.6:8080/dashboard/#frontpanel'</msg>
+<status status="PASS" endtime="20160721 06:04:52.190" starttime="20160721 06:04:52.110"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20160721 06:04:55.191" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" endtime="20160721 06:04:55.191" starttime="20160721 06:04:52.190"></status>
+</kw>
+<status status="PASS" endtime="20160721 06:04:55.192" starttime="20160721 06:04:52.109"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>xpath=//*[@id='webui_nav_list']/li[3]/div</arg>
+<arg>timeout=20s</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:04:55.233" starttime="20160721 06:04:55.192"></status>
+</kw>
+<kw name="Set Browser Implicit Wait" library="Selenium2Library">
+<doc>Sets current browser's implicit wait in seconds.</doc>
+<arguments>
+<arg>10s</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:04:55.240" starttime="20160721 06:04:55.233"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id='webui_nav_list']/li[3]/div</arg>
+</arguments>
+<msg timestamp="20160721 06:04:55.241" level="INFO">Clicking element 'xpath=//*[@id='webui_nav_list']/li[3]/div'.</msg>
+<status status="PASS" endtime="20160721 06:04:55.394" starttime="20160721 06:04:55.241"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//a[contains(@href,'/network/controller')]</arg>
+</arguments>
+<msg timestamp="20160721 06:04:55.394" level="INFO">Clicking element 'xpath=//a[contains(@href,'/network/controller')]'.</msg>
+<status status="PASS" endtime="20160721 06:04:55.716" starttime="20160721 06:04:55.394"></status>
+</kw>
+<kw name="Select Checkbox" library="Selenium2Library">
+<doc>Selects checkbox identified by `locator`.</doc>
+<arguments>
+<arg>id=jqg_ap_grid_table_1</arg>
+</arguments>
+<msg timestamp="20160721 06:04:55.716" level="INFO">Selecting checkbox 'id=jqg_ap_grid_table_1'.</msg>
+<status status="PASS" endtime="20160721 06:04:57.162" starttime="20160721 06:04:55.716"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>id=ap_edit_btn</arg>
+</arguments>
+<msg timestamp="20160721 06:04:57.162" level="INFO">Clicking button 'id=ap_edit_btn'.</msg>
+<status status="PASS" endtime="20160721 06:04:58.466" starttime="20160721 06:04:57.162"></status>
+</kw>
+<kw name="Click Link" library="Selenium2Library">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Radio Settings</arg>
+</arguments>
+<msg timestamp="20160721 06:04:58.466" level="INFO">Clicking link 'Radio Settings'.</msg>
+<status status="PASS" endtime="20160721 06:04:58.731" starttime="20160721 06:04:58.466"></status>
+</kw>
+<kw name="Select From List By Value" library="Selenium2Library">
+<doc>Selects `*values` from list identified by `locator`</doc>
+<arguments>
+<arg>id=radio1_mode</arg>
+<arg>0</arg>
+</arguments>
+<msg timestamp="20160721 06:04:58.732" level="INFO">Selecting value(s) '0' from list 'id=radio1_mode'.</msg>
+<status status="PASS" endtime="20160721 06:04:58.815" starttime="20160721 06:04:58.731"></status>
+</kw>
+<kw name="Select From List By Value" library="Selenium2Library">
+<doc>Selects `*values` from list identified by `locator`</doc>
+<arguments>
+<arg>id=radio1_ht</arg>
+<arg>1</arg>
+</arguments>
+<msg timestamp="20160721 06:04:58.816" level="INFO">Selecting value(s) '1' from list 'id=radio1_ht'.</msg>
+<status status="PASS" endtime="20160721 06:04:58.855" starttime="20160721 06:04:58.815"></status>
+</kw>
+<kw name="Select From List By Value" library="Selenium2Library">
+<doc>Selects `*values` from list identified by `locator`</doc>
+<arguments>
+<arg>id=radio2_mode</arg>
+<arg>7</arg>
+</arguments>
+<msg timestamp="20160721 06:04:58.856" level="INFO">Selecting value(s) '7' from list 'id=radio2_mode'.</msg>
+<status status="PASS" endtime="20160721 06:04:58.893" starttime="20160721 06:04:58.856"></status>
+</kw>
+<kw name="Select From List By Value" library="Selenium2Library">
+<doc>Selects `*values` from list identified by `locator`</doc>
+<arguments>
+<arg>id=radio2_ext</arg>
+<arg>0</arg>
+</arguments>
+<msg timestamp="20160721 06:04:58.894" level="INFO">Selecting value(s) '0' from list 'id=radio2_ext'.</msg>
+<status status="PASS" endtime="20160721 06:04:58.937" starttime="20160721 06:04:58.893"></status>
+</kw>
+<kw type="teardown" name="upload_test_result" library="source">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${TEST STATUS}</arg>
+</arguments>
+<assign>
+<var>${result_status_code}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.939" level="INFO">${result_status_code} = PASS</msg>
+<status status="PASS" endtime="20160721 06:04:58.939" starttime="20160721 06:04:58.938"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>'${result_status_code}'=='PASS'</arg>
+<arg>601</arg>
+<arg>602</arg>
+</arguments>
+<assign>
+<var>${result_status_code}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.940" level="INFO">${result_status_code} = 601</msg>
+<status status="PASS" endtime="20160721 06:04:58.940" starttime="20160721 06:04:58.939"></status>
+</kw>
+<kw name="Split String" library="String">
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<arguments>
+<arg>${Run_id_list}</arg>
+<arg>,</arg>
+</arguments>
+<assign>
+<var>${Run_id_list}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.941" level="INFO">${Run_id_list} = [u'case1:radio', u'5040081', u'case2:ssid_and_sec', u'5040082', u'case3:mac_control', u'5040083', u'']</msg>
+<status status="PASS" endtime="20160721 06:04:58.941" starttime="20160721 06:04:58.940"></status>
+</kw>
+<kw name="Get Index From List" library="Collections">
+<doc>Returns the index of the first occurrence of the ``value`` on the list.</doc>
+<arguments>
+<arg>${Run_id_list}</arg>
+<arg>${TEST NAME}</arg>
+</arguments>
+<assign>
+<var>${name_index}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.942" level="INFO">${name_index} = 0</msg>
+<status status="PASS" endtime="20160721 06:04:58.942" starttime="20160721 06:04:58.941"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(${name_index})+1</arg>
+</arguments>
+<assign>
+<var>${run_id_index}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.943" level="INFO">${run_id_index} = 1</msg>
+<status status="PASS" endtime="20160721 06:04:58.943" starttime="20160721 06:04:58.942"></status>
+</kw>
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${Run_id_list}</arg>
+<arg>${run_id_index}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.944" level="INFO">${run_id} = 5040081</msg>
+<status status="PASS" endtime="20160721 06:04:58.944" starttime="20160721 06:04:58.943"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>requests.packages.urllib3.disable_warnings()</arg>
+<arg>requests</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:04:58.945" starttime="20160721 06:04:58.944"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${Authorization}</arg>
+<arg>Cache-Control=no-cache</arg>
+</arguments>
+<assign>
+<var>${head}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.946" level="INFO">${head} = {u'Content-Type': u'application/json', u'Authorization': u'd2d0Y3xqaW5odWkud2VpQHdhdGNoZ3VhcmQuY29tOjE0OTkyMzQ4MjEwMzg6OTc5ZDQwNjcwNGNmMDg3MGFkYjdlMDJiYTk4YjM1YTc', u'Cache-Control': u'no-cache'}</msg>
+<status status="PASS" endtime="20160721 06:04:58.946" starttime="20160721 06:04:58.945"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${run_id}</arg>
+<arg>https://nephele.qtestnet.com</arg>
+<arg>${head}</arg>
+</arguments>
+<msg timestamp="20160721 06:04:58.947" level="INFO">Creating Session using : alias=5040081, url=https://nephele.qtestnet.com, headers={u'Content-Type': u'application/json', u'Authorization': u'd2d0Y3xqaW5odWkud2VpQHdhdGNoZ3VhcmQuY29tOjE0OTkyMzQ4MjEwMzg6OTc5ZDQwNjcwNGNmMDg3MGFkYjdlMDJiYTk4YjM1YTc', u'Cache-Control': u'no-cache'},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20160721 06:04:58.948" starttime="20160721 06:04:58.947"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>id=${result_status_code}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.948" level="INFO">${status} = {u'id': u'601'}</msg>
+<status status="PASS" endtime="20160721 06:04:58.948" starttime="20160721 06:04:58.948"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>base64.b64encode(open('report.txt','rb').read())</arg>
+<arg>base64</arg>
+</arguments>
+<assign>
+<var>${file_content}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.950" level="INFO">${file_content} = IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=</msg>
+<status status="PASS" endtime="20160721 06:04:58.950" starttime="20160721 06:04:58.949"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${file_content2}</arg>
+<arg>Evaluate</arg>
+<arg>base64.b64encode(open('Hydrangeas.jpg','rb').read())</arg>
+<arg>base64</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:04:58.950" starttime="20160721 06:04:58.950"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${file_content3}</arg>
+<arg>Evaluate</arg>
+<arg>base64.b64encode(open('upload_test.tar.gz','rb').read())</arg>
+<arg>base64</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:04:58.951" starttime="20160721 06:04:58.951"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>name=Report.txt</arg>
+<arg>content_type=text/plain</arg>
+<arg>data=${file_content}</arg>
+<arg>web_url=http://www.baidu.com</arg>
+</arguments>
+<assign>
+<var>${file1}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.952" level="INFO">${file1} = {u'name': u'Report.txt', u'content_type': u'text/plain', u'data': 'IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=', u'web_url': u'http...</msg>
+<status status="PASS" endtime="20160721 06:04:58.952" starttime="20160721 06:04:58.951"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${file2}</arg>
+<arg>Create Dictionary</arg>
+<arg>name=pic</arg>
+<arg>content_type=text/plain</arg>
+<arg>data=${file_content2}</arg>
+<arg>web_url=http://www.baidu.com</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:04:58.952" starttime="20160721 06:04:58.952"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${file3}</arg>
+<arg>Create Dictionary</arg>
+<arg>name=tar</arg>
+<arg>content_type=text/plain</arg>
+<arg>data=${file_content3}</arg>
+<arg>web_url=http://www.baidu.com</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:04:58.953" starttime="20160721 06:04:58.952"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${file1}</arg>
+</arguments>
+<assign>
+<var>@{file_list}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.953" level="INFO">@{file_list} = [ {u'name': u'Report.txt', u'content_type': u'text/plain', u'data': 'IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=', u'web_url': u'ht...</msg>
+<status status="PASS" endtime="20160721 06:04:58.953" starttime="20160721 06:04:58.953"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>attachments=@{file_list}</arg>
+</arguments>
+<assign>
+<var>${attachments}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.954" level="INFO">${attachments} = {u'attachments': [{u'web_url': u'http://www.baidu.com', u'data': 'IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=', u'name': u'Report.t...</msg>
+<status status="PASS" endtime="20160721 06:04:58.954" starttime="20160721 06:04:58.954"></status>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<doc>Returns the given time in the requested format.</doc>
+<arguments>
+<arg>year month day hour min sec</arg>
+</arguments>
+<assign>
+<var>@{time}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.955" level="INFO">@{time} = [ 2016 | 07 | 21 | 06 | 04 | 58 ]</msg>
+<status status="PASS" endtime="20160721 06:04:58.955" starttime="20160721 06:04:58.954"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>exe_start_date=@{time}[0]-@{time}[1]-@{time}[2]T@{time}[3]:@{time}[4]:@{time}[5]+08:00</arg>
+<arg>exe_end_date=@{time}[0]-@{time}[1]-@{time}[2]T@{time}[3]:@{time}[4]:@{time}[5]+08:00</arg>
+<arg>status=${status}</arg>
+<arg>attachments=@{file_list}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.957" level="INFO">${body} = {u'exe_start_date': u'2016-07-21T06:04:58+08:00', u'exe_end_date': u'2016-07-21T06:04:58+08:00', u'status': {u'id': u'601'}, u'attachments': [{u'web_url': u'http://www.baidu.com', u'data': 'IyMjIyMjIy...</msg>
+<status status="PASS" endtime="20160721 06:04:58.957" starttime="20160721 06:04:58.955"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.dumps(${body})</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.959" level="INFO">${body} = {"status": {"id": "601"}, "exe_start_date": "2016-07-21T06:04:58+08:00", "exe_end_date": "2016-07-21T06:04:58+08:00", "attachments": [{"web_url": "http://www.baidu.com", "data": "IyMjIyMjIyMjIyMjIyMjI...</msg>
+<status status="PASS" endtime="20160721 06:04:58.959" starttime="20160721 06:04:58.957"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the</doc>
+<arguments>
+<arg>${run_id}</arg>
+<arg>/api/v3/projects/${project_id}/test-runs/${run_id}/test-logs</arg>
+<arg>data=${body}</arg>
+<arg>headers=${head}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20160721 06:04:58.963" level="INFO">Starting new HTTPS connection (1): nephele.qtestnet.com</msg>
+<msg timestamp="20160721 06:05:02.634" level="INFO">Post Request using : alias=5040081, uri=/api/v3/projects/28411/test-runs/5040081/test-logs, data={"status": {"id": "601"}, "exe_start_date": "2016-07-21T06:04:58+08:00", "exe_end_date": "2016-07-21T06:04:58+08:00", "attachments": [{"web_url": "http://www.baidu.com", "data": "IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=", "name": "Report.txt", "content_type": "text/plain"}]},                     headers={u'Content-Type': u'application/json', u'Authorization': u'd2d0Y3xqaW5odWkud2VpQHdhdGNoZ3VhcmQuY29tOjE0OTkyMzQ4MjEwMzg6OTc5ZDQwNjcwNGNmMDg3MGFkYjdlMDJiYTk4YjM1YTc', u'Cache-Control': u'no-cache'}, files=None, allow_redirects=True </msg>
+<msg timestamp="20160721 06:05:02.634" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" endtime="20160721 06:05:02.634" starttime="20160721 06:04:58.959"></status>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<msg timestamp="20160721 06:05:02.635" level="INFO">{"links":[{"rel":"self","href":"https://nephele.qtestnet.com/api/v3/projects/28411/test-runs/5040081/test-logs/3190004"},{"rel":"test-case","href":"https://nephele.qtestnet.com/api/v3/projects/28411/test-cases/3763215?versionId=4349811"},{"rel":"attachments","href":"https://nephele.qtestnet.com/api/v3/projects/28411/test-logs/3190004/attachments"}],"id":3190004,"test_case_version_id":4349811,"exe_start_date":"2016-07-21T06:04:58+08:00","exe_end_date":"2016-07-21T06:04:58+08:00","user_id":31772,"planned_exe_time":0,"actual_exe_time":0,"status":{"links":[],"id":601,"name":"Passed"},"result_number":36}</msg>
+<status status="PASS" endtime="20160721 06:05:02.635" starttime="20160721 06:05:02.634"></status>
+</kw>
+<kw type="teardown" name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20160721 06:05:02.636" level="INFO">Delete All Sessions</msg>
+<status status="PASS" endtime="20160721 06:05:02.636" starttime="20160721 06:05:02.635"></status>
+</kw>
+<status status="PASS" endtime="20160721 06:05:02.636" starttime="20160721 06:04:58.938"></status>
+</kw>
+<status status="PASS" endtime="20160721 06:05:02.636" critical="yes" starttime="20160721 06:04:52.108"></status>
+</test>
+<test id="s1-t2" name="case2:ssid_and_sec">
+<kw type="setup" name="first_step_goto_page" library="source">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>https://10.138.19.6:8080/dashboard/#frontpanel</arg>
+</arguments>
+<msg timestamp="20160721 06:05:02.638" level="INFO">Opening url 'https://10.138.19.6:8080/dashboard/#frontpanel'</msg>
+<status status="PASS" endtime="20160721 06:05:02.659" starttime="20160721 06:05:02.638"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20160721 06:05:05.659" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" endtime="20160721 06:05:05.660" starttime="20160721 06:05:02.659"></status>
+</kw>
+<status status="PASS" endtime="20160721 06:05:05.660" starttime="20160721 06:05:02.637"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>xpath=//*[@id='webui_nav_list']/li[3]/div</arg>
+<arg>timeout=20s</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:05.696" starttime="20160721 06:05:05.660"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Click Element</arg>
+<arg>xpath=//*[@id='webui_nav_list']/li[3]/div</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:05.696" starttime="20160721 06:05:05.696"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>Click Element</arg>
+<arg>xpath=//a[contains(@href,'/network/controller')]</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:05.697" starttime="20160721 06:05:05.696"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//a[@href='#ssid_tab']</arg>
+</arguments>
+<msg timestamp="20160721 06:05:05.697" level="INFO">Clicking element 'xpath=//a[@href='#ssid_tab']'.</msg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into the log.</doc>
+<msg timestamp="20160721 06:05:15.897" html="yes" level="INFO">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" endtime="20160721 06:05:15.898" starttime="20160721 06:05:15.717"></status>
+</kw>
+<msg timestamp="20160721 06:05:15.898" level="FAIL">ValueError: Element locator 'xpath=//a[@href='#ssid_tab']' did not match any elements.</msg>
+<status status="FAIL" endtime="20160721 06:05:15.898" starttime="20160721 06:05:05.697"></status>
+</kw>
+<kw type="teardown" name="upload_test_result" library="source">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${TEST STATUS}</arg>
+</arguments>
+<assign>
+<var>${result_status_code}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.900" level="INFO">${result_status_code} = FAIL</msg>
+<status status="PASS" endtime="20160721 06:05:15.900" starttime="20160721 06:05:15.899"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>'${result_status_code}'=='PASS'</arg>
+<arg>601</arg>
+<arg>602</arg>
+</arguments>
+<assign>
+<var>${result_status_code}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.901" level="INFO">${result_status_code} = 602</msg>
+<status status="PASS" endtime="20160721 06:05:15.902" starttime="20160721 06:05:15.900"></status>
+</kw>
+<kw name="Split String" library="String">
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<arguments>
+<arg>${Run_id_list}</arg>
+<arg>,</arg>
+</arguments>
+<assign>
+<var>${Run_id_list}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.902" level="INFO">${Run_id_list} = [u'case1:radio', u'5040081', u'case2:ssid_and_sec', u'5040082', u'case3:mac_control', u'5040083', u'']</msg>
+<status status="PASS" endtime="20160721 06:05:15.902" starttime="20160721 06:05:15.902"></status>
+</kw>
+<kw name="Get Index From List" library="Collections">
+<doc>Returns the index of the first occurrence of the ``value`` on the list.</doc>
+<arguments>
+<arg>${Run_id_list}</arg>
+<arg>${TEST NAME}</arg>
+</arguments>
+<assign>
+<var>${name_index}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.903" level="INFO">${name_index} = 2</msg>
+<status status="PASS" endtime="20160721 06:05:15.903" starttime="20160721 06:05:15.902"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(${name_index})+1</arg>
+</arguments>
+<assign>
+<var>${run_id_index}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.905" level="INFO">${run_id_index} = 3</msg>
+<status status="PASS" endtime="20160721 06:05:15.905" starttime="20160721 06:05:15.904"></status>
+</kw>
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${Run_id_list}</arg>
+<arg>${run_id_index}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.905" level="INFO">${run_id} = 5040082</msg>
+<status status="PASS" endtime="20160721 06:05:15.905" starttime="20160721 06:05:15.905"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>requests.packages.urllib3.disable_warnings()</arg>
+<arg>requests</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:15.907" starttime="20160721 06:05:15.906"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${Authorization}</arg>
+<arg>Cache-Control=no-cache</arg>
+</arguments>
+<assign>
+<var>${head}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.908" level="INFO">${head} = {u'Content-Type': u'application/json', u'Authorization': u'd2d0Y3xqaW5odWkud2VpQHdhdGNoZ3VhcmQuY29tOjE0OTkyMzQ4MjEwMzg6OTc5ZDQwNjcwNGNmMDg3MGFkYjdlMDJiYTk4YjM1YTc', u'Cache-Control': u'no-cache'}</msg>
+<status status="PASS" endtime="20160721 06:05:15.908" starttime="20160721 06:05:15.907"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${run_id}</arg>
+<arg>https://nephele.qtestnet.com</arg>
+<arg>${head}</arg>
+</arguments>
+<msg timestamp="20160721 06:05:15.909" level="INFO">Creating Session using : alias=5040082, url=https://nephele.qtestnet.com, headers={u'Content-Type': u'application/json', u'Authorization': u'd2d0Y3xqaW5odWkud2VpQHdhdGNoZ3VhcmQuY29tOjE0OTkyMzQ4MjEwMzg6OTc5ZDQwNjcwNGNmMDg3MGFkYjdlMDJiYTk4YjM1YTc', u'Cache-Control': u'no-cache'},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20160721 06:05:15.909" starttime="20160721 06:05:15.908"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>id=${result_status_code}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.910" level="INFO">${status} = {u'id': u'602'}</msg>
+<status status="PASS" endtime="20160721 06:05:15.910" starttime="20160721 06:05:15.909"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>base64.b64encode(open('report.txt','rb').read())</arg>
+<arg>base64</arg>
+</arguments>
+<assign>
+<var>${file_content}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.911" level="INFO">${file_content} = IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=</msg>
+<status status="PASS" endtime="20160721 06:05:15.912" starttime="20160721 06:05:15.910"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${file_content2}</arg>
+<arg>Evaluate</arg>
+<arg>base64.b64encode(open('Hydrangeas.jpg','rb').read())</arg>
+<arg>base64</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:15.912" starttime="20160721 06:05:15.912"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${file_content3}</arg>
+<arg>Evaluate</arg>
+<arg>base64.b64encode(open('upload_test.tar.gz','rb').read())</arg>
+<arg>base64</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:15.912" starttime="20160721 06:05:15.912"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>name=Report.txt</arg>
+<arg>content_type=text/plain</arg>
+<arg>data=${file_content}</arg>
+<arg>web_url=http://www.baidu.com</arg>
+</arguments>
+<assign>
+<var>${file1}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.913" level="INFO">${file1} = {u'name': u'Report.txt', u'content_type': u'text/plain', u'data': 'IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=', u'web_url': u'http...</msg>
+<status status="PASS" endtime="20160721 06:05:15.913" starttime="20160721 06:05:15.913"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${file2}</arg>
+<arg>Create Dictionary</arg>
+<arg>name=pic</arg>
+<arg>content_type=text/plain</arg>
+<arg>data=${file_content2}</arg>
+<arg>web_url=http://www.baidu.com</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:15.914" starttime="20160721 06:05:15.913"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${file3}</arg>
+<arg>Create Dictionary</arg>
+<arg>name=tar</arg>
+<arg>content_type=text/plain</arg>
+<arg>data=${file_content3}</arg>
+<arg>web_url=http://www.baidu.com</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:15.914" starttime="20160721 06:05:15.914"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${file1}</arg>
+</arguments>
+<assign>
+<var>@{file_list}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.915" level="INFO">@{file_list} = [ {u'name': u'Report.txt', u'content_type': u'text/plain', u'data': 'IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=', u'web_url': u'ht...</msg>
+<status status="PASS" endtime="20160721 06:05:15.915" starttime="20160721 06:05:15.914"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>attachments=@{file_list}</arg>
+</arguments>
+<assign>
+<var>${attachments}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.916" level="INFO">${attachments} = {u'attachments': [{u'web_url': u'http://www.baidu.com', u'data': 'IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=', u'name': u'Report.t...</msg>
+<status status="PASS" endtime="20160721 06:05:15.916" starttime="20160721 06:05:15.915"></status>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<doc>Returns the given time in the requested format.</doc>
+<arguments>
+<arg>year month day hour min sec</arg>
+</arguments>
+<assign>
+<var>@{time}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.916" level="INFO">@{time} = [ 2016 | 07 | 21 | 06 | 05 | 15 ]</msg>
+<status status="PASS" endtime="20160721 06:05:15.916" starttime="20160721 06:05:15.916"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>exe_start_date=@{time}[0]-@{time}[1]-@{time}[2]T@{time}[3]:@{time}[4]:@{time}[5]+08:00</arg>
+<arg>exe_end_date=@{time}[0]-@{time}[1]-@{time}[2]T@{time}[3]:@{time}[4]:@{time}[5]+08:00</arg>
+<arg>status=${status}</arg>
+<arg>attachments=@{file_list}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.918" level="INFO">${body} = {u'exe_start_date': u'2016-07-21T06:05:15+08:00', u'exe_end_date': u'2016-07-21T06:05:15+08:00', u'status': {u'id': u'602'}, u'attachments': [{u'web_url': u'http://www.baidu.com', u'data': 'IyMjIyMjIy...</msg>
+<status status="PASS" endtime="20160721 06:05:15.918" starttime="20160721 06:05:15.917"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.dumps(${body})</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.920" level="INFO">${body} = {"status": {"id": "602"}, "exe_start_date": "2016-07-21T06:05:15+08:00", "exe_end_date": "2016-07-21T06:05:15+08:00", "attachments": [{"web_url": "http://www.baidu.com", "data": "IyMjIyMjIyMjIyMjIyMjI...</msg>
+<status status="PASS" endtime="20160721 06:05:15.920" starttime="20160721 06:05:15.918"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the</doc>
+<arguments>
+<arg>${run_id}</arg>
+<arg>/api/v3/projects/${project_id}/test-runs/${run_id}/test-logs</arg>
+<arg>data=${body}</arg>
+<arg>headers=${head}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20160721 06:05:15.922" level="INFO">Starting new HTTPS connection (1): nephele.qtestnet.com</msg>
+<msg timestamp="20160721 06:05:23.363" level="INFO">Post Request using : alias=5040082, uri=/api/v3/projects/28411/test-runs/5040082/test-logs, data={"status": {"id": "602"}, "exe_start_date": "2016-07-21T06:05:15+08:00", "exe_end_date": "2016-07-21T06:05:15+08:00", "attachments": [{"web_url": "http://www.baidu.com", "data": "IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=", "name": "Report.txt", "content_type": "text/plain"}]},                     headers={u'Content-Type': u'application/json', u'Authorization': u'd2d0Y3xqaW5odWkud2VpQHdhdGNoZ3VhcmQuY29tOjE0OTkyMzQ4MjEwMzg6OTc5ZDQwNjcwNGNmMDg3MGFkYjdlMDJiYTk4YjM1YTc', u'Cache-Control': u'no-cache'}, files=None, allow_redirects=True </msg>
+<msg timestamp="20160721 06:05:23.363" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" endtime="20160721 06:05:23.364" starttime="20160721 06:05:15.920"></status>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<msg timestamp="20160721 06:05:23.364" level="INFO">{"links":[{"rel":"self","href":"https://nephele.qtestnet.com/api/v3/projects/28411/test-runs/5040082/test-logs/3190006"},{"rel":"test-case","href":"https://nephele.qtestnet.com/api/v3/projects/28411/test-cases/3763218?versionId=4349815"},{"rel":"attachments","href":"https://nephele.qtestnet.com/api/v3/projects/28411/test-logs/3190006/attachments"}],"id":3190006,"test_case_version_id":4349815,"exe_start_date":"2016-07-21T06:05:15+08:00","exe_end_date":"2016-07-21T06:05:15+08:00","user_id":31772,"planned_exe_time":0,"actual_exe_time":0,"status":{"links":[],"id":602,"name":"Failed"},"result_number":36}</msg>
+<status status="PASS" endtime="20160721 06:05:23.364" starttime="20160721 06:05:23.364"></status>
+</kw>
+<kw type="teardown" name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20160721 06:05:23.365" level="INFO">Delete All Sessions</msg>
+<status status="PASS" endtime="20160721 06:05:23.365" starttime="20160721 06:05:23.365"></status>
+</kw>
+<status status="PASS" endtime="20160721 06:05:23.365" starttime="20160721 06:05:15.899"></status>
+</kw>
+<status status="FAIL" endtime="20160721 06:05:23.365" critical="yes" starttime="20160721 06:05:02.637">ValueError: Element locator 'xpath=//a[@href='#ssid_tab']' did not match any elements.</status>
+</test>
+<test id="s1-t3" name="case3:mac_control">
+<kw type="setup" name="first_step_goto_page" library="source">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>https://10.138.19.6:8080/dashboard/#frontpanel</arg>
+</arguments>
+<msg timestamp="20160721 06:05:23.367" level="INFO">Opening url 'https://10.138.19.6:8080/dashboard/#frontpanel'</msg>
+<status status="PASS" endtime="20160721 06:05:23.394" starttime="20160721 06:05:23.367"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20160721 06:05:26.395" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" endtime="20160721 06:05:26.396" starttime="20160721 06:05:23.394"></status>
+</kw>
+<status status="PASS" endtime="20160721 06:05:26.396" starttime="20160721 06:05:23.367"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>xpath=//*[@id='webui_nav_list']/li[3]/div</arg>
+<arg>timeout=20s</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:26.422" starttime="20160721 06:05:26.396"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id='webui_nav_list']/li[3]/div</arg>
+</arguments>
+<msg timestamp="20160721 06:05:26.422" level="INFO">Clicking element 'xpath=//*[@id='webui_nav_list']/li[3]/div'.</msg>
+<status status="PASS" endtime="20160721 06:05:26.591" starttime="20160721 06:05:26.422"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//a[contains(@href,'/network/controller')]</arg>
+</arguments>
+<msg timestamp="20160721 06:05:26.591" level="INFO">Clicking element 'xpath=//a[contains(@href,'/network/controller')]'.</msg>
+<status status="PASS" endtime="20160721 06:05:26.893" starttime="20160721 06:05:26.591"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//a[@href='#settings_tab']</arg>
+</arguments>
+<msg timestamp="20160721 06:05:26.893" level="INFO">Clicking element 'xpath=//a[@href='#settings_tab']'.</msg>
+<status status="PASS" endtime="20160721 06:05:28.311" starttime="20160721 06:05:26.893"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>id=cb_deny_grid_table</arg>
+</arguments>
+<msg timestamp="20160721 06:05:28.312" level="INFO">Clicking element 'id=cb_deny_grid_table'.</msg>
+<status status="PASS" endtime="20160721 06:05:28.517" starttime="20160721 06:05:28.312"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>id=deny_rem_btn</arg>
+</arguments>
+<msg timestamp="20160721 06:05:28.517" level="INFO">Clicking button 'id=deny_rem_btn'.</msg>
+<status status="PASS" endtime="20160721 06:05:28.648" starttime="20160721 06:05:28.517"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id='settings_tab']/button</arg>
+</arguments>
+<msg timestamp="20160721 06:05:28.648" level="INFO">Clicking button 'xpath=//*[@id='settings_tab']/button'.</msg>
+<status status="PASS" endtime="20160721 06:05:28.825" starttime="20160721 06:05:28.648"></status>
+</kw>
+<kw name="first_step_goto_page" library="source">
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided URL.</doc>
+<arguments>
+<arg>https://10.138.19.6:8080/dashboard/#frontpanel</arg>
+</arguments>
+<msg timestamp="20160721 06:05:28.826" level="INFO">Opening url 'https://10.138.19.6:8080/dashboard/#frontpanel'</msg>
+<status status="PASS" endtime="20160721 06:05:28.850" starttime="20160721 06:05:28.826"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20160721 06:05:31.851" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" endtime="20160721 06:05:31.851" starttime="20160721 06:05:28.850"></status>
+</kw>
+<status status="PASS" endtime="20160721 06:05:31.851" starttime="20160721 06:05:28.825"></status>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<arguments>
+<arg>xpath=//*[@id='webui_nav_list']/li[3]/div</arg>
+<arg>timeout=20s</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:31.891" starttime="20160721 06:05:31.852"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id='webui_nav_list']/li[3]/div</arg>
+</arguments>
+<msg timestamp="20160721 06:05:31.891" level="INFO">Clicking element 'xpath=//*[@id='webui_nav_list']/li[3]/div'.</msg>
+<status status="PASS" endtime="20160721 06:05:32.019" starttime="20160721 06:05:31.891"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//a[contains(@href,'/network/controller')]</arg>
+</arguments>
+<msg timestamp="20160721 06:05:32.020" level="INFO">Clicking element 'xpath=//a[contains(@href,'/network/controller')]'.</msg>
+<status status="PASS" endtime="20160721 06:05:32.411" starttime="20160721 06:05:32.020"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//a[@href='#settings_tab']</arg>
+</arguments>
+<msg timestamp="20160721 06:05:32.412" level="INFO">Clicking element 'xpath=//a[@href='#settings_tab']'.</msg>
+<status status="PASS" endtime="20160721 06:05:33.689" starttime="20160721 06:05:32.412"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>id=deny_add_btn</arg>
+</arguments>
+<msg timestamp="20160721 06:05:33.689" level="INFO">Clicking button 'id=deny_add_btn'.</msg>
+<status status="PASS" endtime="20160721 06:05:33.839" starttime="20160721 06:05:33.689"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>id=mac_addr</arg>
+<arg>22:22:22:22:22:66</arg>
+</arguments>
+<msg timestamp="20160721 06:05:33.840" level="INFO">Typing text '22:22:22:22:22:66' into text field 'id=mac_addr'</msg>
+<status status="PASS" endtime="20160721 06:05:34.505" starttime="20160721 06:05:33.839"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>id=mac_name</arg>
+<arg>2211144</arg>
+</arguments>
+<msg timestamp="20160721 06:05:34.506" level="INFO">Typing text '2211144' into text field 'id=mac_name'</msg>
+<status status="PASS" endtime="20160721 06:05:34.611" starttime="20160721 06:05:34.506"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id='mac_addr_dlg']/div[3]/button[1]</arg>
+</arguments>
+<msg timestamp="20160721 06:05:34.611" level="INFO">Clicking button 'xpath=//*[@id='mac_addr_dlg']/div[3]/button[1]'.</msg>
+<status status="PASS" endtime="20160721 06:05:34.807" starttime="20160721 06:05:34.611"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20160721 06:05:36.808" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" endtime="20160721 06:05:36.808" starttime="20160721 06:05:34.808"></status>
+</kw>
+<kw name="Click Button" library="Selenium2Library">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id='settings_tab']/button</arg>
+</arguments>
+<msg timestamp="20160721 06:05:36.809" level="INFO">Clicking button 'xpath=//*[@id='settings_tab']/button'.</msg>
+<status status="PASS" endtime="20160721 06:05:37.008" starttime="20160721 06:05:36.809"></status>
+</kw>
+<kw type="teardown" name="upload_test_result" library="source">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${TEST STATUS}</arg>
+</arguments>
+<assign>
+<var>${result_status_code}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.009" level="INFO">${result_status_code} = PASS</msg>
+<status status="PASS" endtime="20160721 06:05:37.009" starttime="20160721 06:05:37.009"></status>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<doc>Sets variable based on the given condition.</doc>
+<arguments>
+<arg>'${result_status_code}'=='PASS'</arg>
+<arg>601</arg>
+<arg>602</arg>
+</arguments>
+<assign>
+<var>${result_status_code}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.010" level="INFO">${result_status_code} = 601</msg>
+<status status="PASS" endtime="20160721 06:05:37.011" starttime="20160721 06:05:37.009"></status>
+</kw>
+<kw name="Split String" library="String">
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<arguments>
+<arg>${Run_id_list}</arg>
+<arg>,</arg>
+</arguments>
+<assign>
+<var>${Run_id_list}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.011" level="INFO">${Run_id_list} = [u'case1:radio', u'5040081', u'case2:ssid_and_sec', u'5040082', u'case3:mac_control', u'5040083', u'']</msg>
+<status status="PASS" endtime="20160721 06:05:37.011" starttime="20160721 06:05:37.011"></status>
+</kw>
+<kw name="Get Index From List" library="Collections">
+<doc>Returns the index of the first occurrence of the ``value`` on the list.</doc>
+<arguments>
+<arg>${Run_id_list}</arg>
+<arg>${TEST NAME}</arg>
+</arguments>
+<assign>
+<var>${name_index}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.012" level="INFO">${name_index} = 4</msg>
+<status status="PASS" endtime="20160721 06:05:37.012" starttime="20160721 06:05:37.011"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(${name_index})+1</arg>
+</arguments>
+<assign>
+<var>${run_id_index}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.013" level="INFO">${run_id_index} = 5</msg>
+<status status="PASS" endtime="20160721 06:05:37.014" starttime="20160721 06:05:37.012"></status>
+</kw>
+<kw name="Get From List" library="Collections">
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<arguments>
+<arg>${Run_id_list}</arg>
+<arg>${run_id_index}</arg>
+</arguments>
+<assign>
+<var>${run_id}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.014" level="INFO">${run_id} = 5040083</msg>
+<status status="PASS" endtime="20160721 06:05:37.014" starttime="20160721 06:05:37.014"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>requests.packages.urllib3.disable_warnings()</arg>
+<arg>requests</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:37.015" starttime="20160721 06:05:37.014"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${Authorization}</arg>
+<arg>Cache-Control=no-cache</arg>
+</arguments>
+<assign>
+<var>${head}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.016" level="INFO">${head} = {u'Content-Type': u'application/json', u'Authorization': u'd2d0Y3xqaW5odWkud2VpQHdhdGNoZ3VhcmQuY29tOjE0OTkyMzQ4MjEwMzg6OTc5ZDQwNjcwNGNmMDg3MGFkYjdlMDJiYTk4YjM1YTc', u'Cache-Control': u'no-cache'}</msg>
+<status status="PASS" endtime="20160721 06:05:37.016" starttime="20160721 06:05:37.016"></status>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${run_id}</arg>
+<arg>https://nephele.qtestnet.com</arg>
+<arg>${head}</arg>
+</arguments>
+<msg timestamp="20160721 06:05:37.017" level="INFO">Creating Session using : alias=5040083, url=https://nephele.qtestnet.com, headers={u'Content-Type': u'application/json', u'Authorization': u'd2d0Y3xqaW5odWkud2VpQHdhdGNoZ3VhcmQuY29tOjE0OTkyMzQ4MjEwMzg6OTc5ZDQwNjcwNGNmMDg3MGFkYjdlMDJiYTk4YjM1YTc', u'Cache-Control': u'no-cache'},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20160721 06:05:37.018" starttime="20160721 06:05:37.017"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>id=${result_status_code}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.019" level="INFO">${status} = {u'id': u'601'}</msg>
+<status status="PASS" endtime="20160721 06:05:37.019" starttime="20160721 06:05:37.018"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>base64.b64encode(open('report.txt','rb').read())</arg>
+<arg>base64</arg>
+</arguments>
+<assign>
+<var>${file_content}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.020" level="INFO">${file_content} = IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=</msg>
+<status status="PASS" endtime="20160721 06:05:37.020" starttime="20160721 06:05:37.019"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${file_content2}</arg>
+<arg>Evaluate</arg>
+<arg>base64.b64encode(open('Hydrangeas.jpg','rb').read())</arg>
+<arg>base64</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:37.021" starttime="20160721 06:05:37.020"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${file_content3}</arg>
+<arg>Evaluate</arg>
+<arg>base64.b64encode(open('upload_test.tar.gz','rb').read())</arg>
+<arg>base64</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:37.021" starttime="20160721 06:05:37.021"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>name=Report.txt</arg>
+<arg>content_type=text/plain</arg>
+<arg>data=${file_content}</arg>
+<arg>web_url=http://www.baidu.com</arg>
+</arguments>
+<assign>
+<var>${file1}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.022" level="INFO">${file1} = {u'name': u'Report.txt', u'content_type': u'text/plain', u'data': 'IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=', u'web_url': u'http...</msg>
+<status status="PASS" endtime="20160721 06:05:37.022" starttime="20160721 06:05:37.021"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${file2}</arg>
+<arg>Create Dictionary</arg>
+<arg>name=pic</arg>
+<arg>content_type=text/plain</arg>
+<arg>data=${file_content2}</arg>
+<arg>web_url=http://www.baidu.com</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:37.023" starttime="20160721 06:05:37.022"></status>
+</kw>
+<kw name="Comment" library="BuiltIn">
+<doc>Displays the given messages in the log file as keyword arguments.</doc>
+<arguments>
+<arg>${file3}</arg>
+<arg>Create Dictionary</arg>
+<arg>name=tar</arg>
+<arg>content_type=text/plain</arg>
+<arg>data=${file_content3}</arg>
+<arg>web_url=http://www.baidu.com</arg>
+</arguments>
+<status status="PASS" endtime="20160721 06:05:37.023" starttime="20160721 06:05:37.023"></status>
+</kw>
+<kw name="Create List" library="BuiltIn">
+<doc>Returns a list containing given items.</doc>
+<arguments>
+<arg>${file1}</arg>
+</arguments>
+<assign>
+<var>@{file_list}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.024" level="INFO">@{file_list} = [ {u'name': u'Report.txt', u'content_type': u'text/plain', u'data': 'IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=', u'web_url': u'ht...</msg>
+<status status="PASS" endtime="20160721 06:05:37.024" starttime="20160721 06:05:37.023"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>attachments=@{file_list}</arg>
+</arguments>
+<assign>
+<var>${attachments}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.024" level="INFO">${attachments} = {u'attachments': [{u'web_url': u'http://www.baidu.com', u'data': 'IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=', u'name': u'Report.t...</msg>
+<status status="PASS" endtime="20160721 06:05:37.025" starttime="20160721 06:05:37.024"></status>
+</kw>
+<kw name="Get Time" library="BuiltIn">
+<doc>Returns the given time in the requested format.</doc>
+<arguments>
+<arg>year month day hour min sec</arg>
+</arguments>
+<assign>
+<var>@{time}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.025" level="INFO">@{time} = [ 2016 | 07 | 21 | 06 | 05 | 37 ]</msg>
+<status status="PASS" endtime="20160721 06:05:37.025" starttime="20160721 06:05:37.025"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on given items.</doc>
+<arguments>
+<arg>exe_start_date=@{time}[0]-@{time}[1]-@{time}[2]T@{time}[3]:@{time}[4]:@{time}[5]+08:00</arg>
+<arg>exe_end_date=@{time}[0]-@{time}[1]-@{time}[2]T@{time}[3]:@{time}[4]:@{time}[5]+08:00</arg>
+<arg>status=${status}</arg>
+<arg>attachments=@{file_list}</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.027" level="INFO">${body} = {u'exe_start_date': u'2016-07-21T06:05:37+08:00', u'exe_end_date': u'2016-07-21T06:05:37+08:00', u'status': {u'id': u'601'}, u'attachments': [{u'web_url': u'http://www.baidu.com', u'data': 'IyMjIyMjIy...</msg>
+<status status="PASS" endtime="20160721 06:05:37.027" starttime="20160721 06:05:37.026"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>json.dumps(${body})</arg>
+<arg>json</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.029" level="INFO">${body} = {"status": {"id": "601"}, "exe_start_date": "2016-07-21T06:05:37+08:00", "exe_end_date": "2016-07-21T06:05:37+08:00", "attachments": [{"web_url": "http://www.baidu.com", "data": "IyMjIyMjIyMjIyMjIyMjI...</msg>
+<status status="PASS" endtime="20160721 06:05:37.029" starttime="20160721 06:05:37.027"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the</doc>
+<arguments>
+<arg>${run_id}</arg>
+<arg>/api/v3/projects/${project_id}/test-runs/${run_id}/test-logs</arg>
+<arg>data=${body}</arg>
+<arg>headers=${head}</arg>
+</arguments>
+<assign>
+<var>${response}</var>
+</assign>
+<msg timestamp="20160721 06:05:37.031" level="INFO">Starting new HTTPS connection (1): nephele.qtestnet.com</msg>
+<msg timestamp="20160721 06:05:38.971" level="INFO">Post Request using : alias=5040083, uri=/api/v3/projects/28411/test-runs/5040083/test-logs, data={"status": {"id": "601"}, "exe_start_date": "2016-07-21T06:05:37+08:00", "exe_end_date": "2016-07-21T06:05:37+08:00", "attachments": [{"web_url": "http://www.baidu.com", "data": "IyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIw0KIyAgIFVJIERlbW8gVGVzdCBSZXBvcnQNCiMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyM=", "name": "Report.txt", "content_type": "text/plain"}]},                     headers={u'Content-Type': u'application/json', u'Authorization': u'd2d0Y3xqaW5odWkud2VpQHdhdGNoZ3VhcmQuY29tOjE0OTkyMzQ4MjEwMzg6OTc5ZDQwNjcwNGNmMDg3MGFkYjdlMDJiYTk4YjM1YTc', u'Cache-Control': u'no-cache'}, files=None, allow_redirects=True </msg>
+<msg timestamp="20160721 06:05:38.971" level="INFO">${response} = &lt;Response [404]&gt;</msg>
+<status status="PASS" endtime="20160721 06:05:38.971" starttime="20160721 06:05:37.029"></status>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<msg timestamp="20160721 06:05:38.972" level="INFO">{"message":"Test Run not found!"}</msg>
+<status status="PASS" endtime="20160721 06:05:38.972" starttime="20160721 06:05:38.972"></status>
+</kw>
+<kw type="teardown" name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20160721 06:05:38.973" level="INFO">Delete All Sessions</msg>
+<status status="PASS" endtime="20160721 06:05:38.973" starttime="20160721 06:05:38.973"></status>
+</kw>
+<status status="PASS" endtime="20160721 06:05:38.973" starttime="20160721 06:05:37.008"></status>
+</kw>
+<status status="PASS" endtime="20160721 06:05:38.973" critical="yes" starttime="20160721 06:05:23.366"></status>
+</test>
+<kw type="teardown" name="suite_teardown" library="source">
+<kw name="logout_and_close" library="source">
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//a[contains(@data-toggle,'dropdown')]</arg>
+</arguments>
+<msg timestamp="20160721 06:05:38.976" level="INFO">Clicking element 'xpath=//a[contains(@data-toggle,'dropdown')]'.</msg>
+<status status="PASS" endtime="20160721 06:05:39.570" starttime="20160721 06:05:38.975"></status>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<doc>Click element identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//*[@id='helpLinks']/div/ul/li/a</arg>
+</arguments>
+<msg timestamp="20160721 06:05:39.570" level="INFO">Clicking element 'xpath=//*[@id='helpLinks']/div/ul/li/a'.</msg>
+<status status="PASS" endtime="20160721 06:05:39.762" starttime="20160721 06:05:39.570"></status>
+</kw>
+<kw name="Page Should Contain Button" library="Selenium2Library">
+<doc>Verifies button identified by `locator` is found from current page.</doc>
+<arguments>
+<arg>Log in</arg>
+</arguments>
+<msg timestamp="20160721 06:05:49.800" level="INFO">&lt;!DOCTYPE html&gt;
+&lt;!--[if lt IE 7]&gt;      &lt;html class="no-js lt-ie9 lt-ie8 lt-ie7"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 7]&gt;         &lt;html class="no-js lt-ie9 lt-ie8"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 8]&gt;         &lt;html class="no-js lt-ie9"&gt; &lt;![endif]--&gt;
+&lt;!--[if gt IE 8]&gt;&lt;!--&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style=""&gt;&lt;!--&lt;![endif]--&gt;&lt;head&gt;&lt;meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" /&gt;
+	
+	    &lt;base href="/" /&gt;
+        &lt;!--[if IE]&gt;&lt;script type="text/javascript"&gt;
+            // Fix for IE ignoring relative base tags.
+            (function() {
+                var baseTag = document.getElementsByTagName('base')[0];
+                baseTag.href = baseTag.href;
+            })();
+        &lt;/script&gt;&lt;![endif]--&gt;
+        
+	    &lt;!-- Framework_login_0x1F9 --&gt;
+	    
+        &lt;link href="/jquery/bootstrap-2.2.2/css/bootstrap.min.css" rel="stylesheet" /&gt;	   
+        &lt;link href="/jquery/bootstrap-2.2.2/css/bootstrap-responsive.min.css" rel="stylesheet" /&gt;
+	    &lt;link type="text/css" href="/css/allovus.css" rel="StyleSheet" /&gt;
+	    &lt;link type="text/css" href="/css/allovus_login.css" rel="StyleSheet" /&gt;
+	    &lt;script type="text/javascript" src="/jquery/jquery-1.8.3.min.js"&gt;&lt;/script&gt;
+        &lt;script src="/jquery/jquery-xmlrpc/typedarray.js"&gt;&lt;/script&gt;
+        &lt;script src="/jquery/jquery-xmlrpc/jquery.xmlrpc.min.js"&gt;&lt;/script&gt;
+        &lt;script src="/jquery/modernizr-2.6.2-respond-1.1.0/modernizr-2.6.2-respond-1.1.0.min.js"&gt;&lt;/script&gt;
+	    &lt;script src="/js/login.js"&gt;&lt;/script&gt;    
+	    &lt;link href="/images/favicon.ico" rel="shortcut icon" /&gt;
+	    &lt;script src="/jquery/bootstrap-2.2.2/js/bootstrap.min.js"&gt;&lt;/script&gt;
+	
+	&lt;/head&gt;   
+    &lt;body&gt;
+
+    &lt;div class="row-fluid"&gt;
+        &lt;div class="login-left-panel"&gt;
+            &lt;div class="tab"&gt;
+                &lt;img src="/images/wg_logo_white_login.png" /&gt;
+            &lt;/div&gt;
+            &lt;div id="div_jscriptwarning"&gt;
+                &lt;p&gt;The site requires JavaScript.  Enable JavaScript in your browser to continue.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="login-form"&gt;
+                &lt;form accept-charset="utf-8" id="login" class="form-signin"&gt;
+                    &lt;label for="username" class="control-label"&gt;User Name&lt;/label&gt;
+                    &lt;input type="text" autofocus="" placeholder="User Name" class="input-block-level" name="username" id="username" /&gt;
+
+                    &lt;label for="password" class="control-label"&gt;Passphrase&lt;/label&gt;
+                    &lt;input type="password" placeholder="Passphrase" class="input-block-level" autocomplete="off" name="password" id="password" /&gt;
+
+                    &lt;label for="sel_auth_server" class="control-label"&gt;Authentication Server&lt;/label&gt;
+                    &lt;select id="sel_auth_server"&gt;
+                        &lt;option value="Firebox-DB"&gt;Firebox-DB&lt;/option&gt;
+                        &lt;option value="RADIUS"&gt;RADIUS&lt;/option&gt;
+                        &lt;option value="LDAP"&gt;LDAP&lt;/option&gt;
+                        &lt;option value="AD"&gt;Active Directory&lt;/option&gt;
+                    &lt;/select&gt;
+            
+                    &lt;label for="ad_domain" id="lbl_ad_domain" class="control-label" style="display: none;"&gt;Domain&lt;/label&gt;
+                    &lt;input type="text" placeholder="Domain" class="input-block-level" id="ad_domain" style="display: none;" /&gt;
+
+                    &lt;!-- REMOVED btn-large CLASS --&gt;
+                    &lt;button data-loading-text="Logging In..." id="submit" class="btn btn-primary"&gt;Log in&lt;/button&gt;
+
+                    &lt;input type="hidden" id="domain" name="domain" /&gt;
+                    &lt;input type="hidden" value="/" id="from_page" name="from_page" /&gt;
+                    &lt;br /&gt;&lt;br /&gt;
+                    &lt;div class="alert alert-error hide" id="error_container" style="display: none;"&gt;&lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+&lt;!--
+    &lt;div id="webui_footer"&gt;Powered by WatchGuard Technologies&lt;/div&gt; 
+--&gt;
+  
+
+&lt;script&gt;
+var S_INVALID_LOGIN = "Incorrect user name or passphrase.";
+var S_ENTER_USER_NAME = "You must specify a user name.";
+var S_ENTER_PASSPHRASE = "You must specify a passphrase.";
+var S_ENTER_DOMAIN = "You must specify a domain.";
+&lt;/script&gt;
+&lt;/body&gt;&lt;/html&gt;</msg>
+<msg timestamp="20160721 06:05:49.810" level="INFO">Current page contains button 'Log in'.</msg>
+<status status="PASS" endtime="20160721 06:05:49.810" starttime="20160721 06:05:39.762"></status>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20160721 06:05:49.844" starttime="20160721 06:05:49.811"></status>
+</kw>
+<status status="PASS" endtime="20160721 06:05:49.845" starttime="20160721 06:05:38.975"></status>
+</kw>
+<kw name="Stop Dispaly" library="DisplayLib">
+<status status="PASS" endtime="20160721 06:05:49.850" starttime="20160721 06:05:49.845"></status>
+</kw>
+<status status="PASS" endtime="20160721 06:05:49.851" starttime="20160721 06:05:38.975"></status>
+</kw>
+<status status="FAIL" endtime="20160721 06:05:49.851" starttime="20160721 06:04:43.454"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="2">Critical Tests</stat>
+<stat fail="1" pass="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="Network" pass="2">Network</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

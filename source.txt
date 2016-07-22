@@ -1,0 +1,60 @@
+*** Settings ***
+Library           Selenium2Library
+Library           RequestsLibrary
+Library           String
+Library           Collections
+Library           OperatingSystem
+Library           DisplayLib.py
+
+*** Keywords ***
+login_web
+    Open Browser    ${url}    firefox
+    Page Should Contain Button    Log in
+    Input Text    id=username    admin
+    Input Password    id=password    readwrite
+    Click Button    id=submit
+    Set Browser Implicit Wait    10
+
+logout_and_close
+    Click Element    xpath=//a[contains(@data-toggle,'dropdown')]
+    Click Element    xpath=//*[@id='helpLinks']/div/ul/li/a
+    Page Should Contain Button    Log in
+    Close Browser
+
+first_step_goto_page
+    Go To    https://10.138.19.6:8080/dashboard/#frontpanel
+    Sleep    3
+
+suite_setup
+    Start Display
+    login_web
+
+suite_teardown
+    logout_and_close
+    Stop Dispaly
+
+upload_test_result
+    ${result_status_code}    Set Variable    ${TEST STATUS}
+    ${result_status_code}    Set Variable If    '${result_status_code}'=='PASS'    601    602
+    ${Run_id_list}    Split String    ${Run_id_list}    ,
+    ${name_index}    Get Index From List    ${Run_id_list}    ${TEST NAME}
+    ${run_id_index}    Evaluate    int(${name_index})+1
+    ${run_id}    Get From List    ${Run_id_list}    ${run_id_index}
+    Evaluate    requests.packages.urllib3.disable_warnings()    requests
+    ${head}    Create Dictionary    Content-Type=application/json    Authorization=${Authorization}    Cache-Control=no-cache
+    Create Session    ${run_id}    https://nephele.qtestnet.com    ${head}
+    ${status}    Create Dictionary    id=${result_status_code}
+    ${file_content}    Evaluate    base64.b64encode(open('report.txt','rb').read())    base64
+    Comment    ${file_content2}    Evaluate    base64.b64encode(open('Hydrangeas.jpg','rb').read())    base64
+    Comment    ${file_content3}    Evaluate    base64.b64encode(open('upload_test.tar.gz','rb').read())    base64
+    ${file1}    Create Dictionary    name=Report.txt    content_type=text/plain    data=${file_content}    web_url=http://www.baidu.com
+    Comment    ${file2}    Create Dictionary    name=pic    content_type=text/plain    data=${file_content2}    web_url=http://www.baidu.com
+    Comment    ${file3}    Create Dictionary    name=tar    content_type=text/plain    data=${file_content3}    web_url=http://www.baidu.com
+    @{file_list}    Create List    ${file1}
+    ${attachments}    Create Dictionary    attachments=@{file_list}
+    @{time}    Get Time    year month day hour min sec
+    ${body}    Create Dictionary    exe_start_date=@{time}[0]-@{time}[1]-@{time}[2]T@{time}[3]:@{time}[4]:@{time}[5]+08:00    exe_end_date=@{time}[0]-@{time}[1]-@{time}[2]T@{time}[3]:@{time}[4]:@{time}[5]+08:00    status=${status}    attachments=@{file_list}
+    ${body}    Evaluate    json.dumps(${body})    json
+    ${response}    Post Request    ${run_id}    /api/v3/projects/${project_id}/test-runs/${run_id}/test-logs    data=${body}    headers=${head}
+    Log Many    ${response.content}
+    [Teardown]    Delete All Sessions

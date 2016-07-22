@@ -1,0 +1,83 @@
+*** Settings ***
+Suite Setup       suite_setup
+Suite Teardown    suite_teardown
+Test Setup        first_step_goto_page
+Test Teardown     upload_test_result
+Library           Selenium2Library    30
+Library           String
+Library           Collections
+Library           RequestsLibrary
+Resource          source.txt
+
+*** Variables ***
+${Run_id_list}    ${EMPTY}
+${Project_id}     ${EMPTY}
+${Authorization}    d2d0Y3xqaW5odWkud2VpQHdhdGNoZ3VhcmQuY29tOjE0OTkyMzQ4MjEwMzg6OTc5ZDQwNjcwNGNmMDg3MGFkYjdlMDJiYTk4YjM1YTc
+${url}            https://10.138.19.6:8080
+
+*** Test Cases ***
+case1:radio
+    Wait Until Page Contains Element    xpath=//*[@id='webui_nav_list']/li[3]/div    timeout=20s
+    Set Browser Implicit Wait    10s
+    Click Element    xpath=//*[@id='webui_nav_list']/li[3]/div
+    Click Element    xpath=//a[contains(@href,'/network/controller')]
+    Select Checkbox    id=jqg_ap_grid_table_1
+    Click Button    id=ap_edit_btn
+    Click Link    Radio Settings
+    Select From List By Value    id=radio1_mode    0
+    Select From List By Value    id=radio1_ht    1
+    Select From List By Value    id=radio2_mode    7
+    Select From List By Value    id=radio2_ext    0
+
+case2:ssid_and_sec
+    Wait Until Page Contains Element    xpath=//*[@id='webui_nav_list']/li[3]/div    timeout=20s
+    Comment    Click Element    xpath=//*[@id='webui_nav_list']/li[3]/div
+    Comment    Click Element    xpath=//a[contains(@href,'/network/controller')]
+    Click Element    xpath=//a[@href='#ssid_tab']
+    Click Element    xpath=//input[@id='jqg_ssid_grid_table_1']
+    Click Button    id=ssid_edit_btn
+    Click Element    xpath=//a[@href='#security']
+    Select From List By Value    id=security_mode    4
+    Select From List By Value    id=encryption    2
+    Input Text    id=passphrase    88888888
+
+case3:mac_control
+    Wait Until Page Contains Element    xpath=//*[@id='webui_nav_list']/li[3]/div    timeout=20s
+    Click Element    xpath=//*[@id='webui_nav_list']/li[3]/div
+    Click Element    xpath=//a[contains(@href,'/network/controller')]
+    Click Element    xpath=//a[@href='#settings_tab']
+    Click Element    id=cb_deny_grid_table
+    Click Button    id=deny_rem_btn
+    Click Button    xpath=//*[@id='settings_tab']/button
+    first_step_goto_page
+    Wait Until Page Contains Element    xpath=//*[@id='webui_nav_list']/li[3]/div    timeout=20s
+    Click Element    xpath=//*[@id='webui_nav_list']/li[3]/div
+    Click Element    xpath=//a[contains(@href,'/network/controller')]
+    Click Element    xpath=//a[@href='#settings_tab']
+    Click Button    id=deny_add_btn
+    Input Text    id=mac_addr    22:22:22:22:22:66
+    Input Text    id=mac_name    2211144
+    Click Button    xpath=//*[@id='mac_addr_dlg']/div[3]/button[1]
+    sleep    2
+    Click Button    xpath=//*[@id='settings_tab']/button
+
+case4:get_value_of_gwc
+    Wait Until Page Contains Element    xpath=//a[@href='/dashboard/#gatewaywirelesscontroller']    timeout=20s
+    Click Element    xpath=//a[@href='/dashboard/#gatewaywirelesscontroller']
+    Click Element    xpath=//*[@id='tab_ul']/li[3]/a
+    ${a}    Get Text    xpath=//td[@aria-describedby='waps_grid_table_wap_name']
+    ${b}    Get Text    xpath=//div[contains(.,'Online')]
+    Log    ${b}
+    Click Element    xpath=//a[contains(.,'Foreign BSSIDs')]
+    ${c}    Get Text    id=foreign_grid_table
+    log    ${c}
+
+case5:set_and_check_Notification
+    Click Element    xpath=//*[@id='webui_nav_list']/li[3]/div
+    Click Element    xpath=//a[contains(@href,'/network/controller')]
+    Click Link    Notification
+    sleep    4
+    ${a}    Get Value    id=gwc_send_snmp_trap
+    ${b}    Get Value    id=gwc_send_notification
+    ${c}    Get Value    id=gwc_send_notif_interval
+    ${d}    Get Value    id=gwc_send_notif_count
