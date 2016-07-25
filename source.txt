@@ -22,7 +22,7 @@ logout_and_close
     Close Browser
 
 first_step_goto_page
-    Go To    https://10.138.19.6:8080/dashboard/#frontpanel
+    Go To    ${url}/dashboard/#frontpanel
     Sleep    3
 
 suite_setup
