@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-  
-  
+
 from pyvirtualdisplay import Display
 
 display = Display(visible=0, size=(1280, 960))
