@@ -11,7 +11,7 @@ class DisplayLib(object):
     ## open virtual dispaly
     def start_display(self):
         display.start()
-      
+
     ## close virtual dispaly
     def stop_dispaly(self):
         display.stop()
