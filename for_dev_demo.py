@@ -1,8 +1,4 @@
 # -*- coding:utf-8 -*-
-'''
-@version: 23.3.2016
-@author: yndots
-'''
 from Selenium2Library import Selenium2Library
 from Selenium2Library.keywords import *
 import time
